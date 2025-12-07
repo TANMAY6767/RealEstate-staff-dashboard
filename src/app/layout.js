@@ -16,7 +16,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Red Apple Cars",
+  title: "Dashboard",
   description: "Admin Dashboard",
 };
 
