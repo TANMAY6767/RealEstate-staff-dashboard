@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+    .lobster { font-family: 'Lobster', cursive; }
+  </style>
+  <style>
+  @media print {
+    body {
+      zoom: 70%; /* Shrinks entire page */
+    }
+  }
+</style>
+</head>
+<body class="bg-white text-black p-6">
+  <!-- Logo and Header -->
+  <div class="flex justify-between items-start">
+    <div class="flex items-center">
+      <div class="h-[150px] mr-2">
+        <img src="<%= company.logo %>" alt="Company Logo" class="h-full mb-2" />
+      </div>
+      <div class="ml-2">
+        <h1 class="text-6xl text-red-600 lobster"><%= company.name %></h1>
+        <p class="text-2xl mt-2">Car Payment Invoice</p>
+      </div>
+    </div>
+    <div class="text-left">
+      <h1 class="text-2xl font-bold">TAX INVOICE</h1>
+      <p>Company Reg # <%= company.regNumber %></p>
+      <p>VAT Reg # <%= company.vatNumber %></p>
+      <p>Invoice Date <%= invoice.date %></p>
+      <p>Document Number <%= invoice.documentNumber %></p>
+      <p>Reference <%= invoice.reference %></p>
+    </div>
+  </div>
+
+  <div class="bg-red-500 h-1 my-2"></div>
+  
+  <!-- Customer and Banking Details -->
+  <div class="flex justify-between border border-b border-gray-400/40 my-4 w-full">
+    <div class="w-[40%] m-2">
+      <h2 class="font-bold text-lg">Customer Details</h2>
+      <div class="flex items-center">
+        <h2 class="font-bold">Customer:</h2>
+        <p><%= customer.name %></p>
+      </div>
+      <div class="flex items-center">
+        <h2 class="font-bold">Customer Number: </h2>
+        <p><%= customer.number %></p>
+      </div>
+      <p class="font-bold">Bond Store: <%= customer.bondStore %></p>
+      <p><%= customer.address %></p>
+    </div>
+
+    <div class="border-r border-gray-400/40"></div>
+
+    <div class="w-[45%] m-2">
+      <h2 class="font-bold text-lg">Banking Details - PULA ACCOUNT</h2>
+      <div class="flex items-center">
+        <h2 class="font-bold min-w-fit">Bank name: </h2>
+        <p><%= banking.bankName %></p>
+      </div>
+      <div class="flex items-center">
+        <h2 class="font-bold min-w-fit">Beneficiary Account name:</h2>
+        <p><%= banking.accountName %></p>
+      </div>
+      <div class="flex">
+        <h2 class="min-w-fit font-bold">Account Number:</h2>
+        <p><%= banking.accountNumber %></p>
+      </div>
+      <div class="flex">
+        <h2 class="min-w-fit font-bold">Branch Code:</h2>
+        <p><%= banking.branchCode %></p>
+      </div>
+      <div class="flex">
+        <h2 class="min-w-fit font-bold">SWIFT Code:</h2>
+        <p><%= banking.swiftCode %></p>
+      </div>
+      <div class="flex">
+        <h2 class="min-w-fit font-bold">Beneficiary address:</h2>
+        <p><%= banking.address %></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vehicle Details Tables -->
+  <div class="my-2">
+    <table class="w-full border-collapse border border-gray-400/40 mb-4">
+      <thead>
+        <tr class="bg-red-100">
+          <th class="p-2">Chassis No</th>
+          <th class="p-2">Make Model</th>
+          <th class="p-2">Border Post</th>
+          <th class="p-2">Country</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-center p-2"><%= vehicle.chassisNo %></td>
+          <td class="text-center p-2"><%= vehicle.makeModel %></td>
+          <td class="text-center p-2"><%= vehicle.borderPost %></td>
+          <td class="text-center p-2"><%= vehicle.country %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="w-full border-collapse border border-gray-400/40 mb-4">
+      <thead>
+        <tr class="bg-red-100">
+          <th class="p-2">Colour</th>
+          <th class="p-2">Engine No</th>
+          <th class="p-2">Doors</th>
+          <th class="p-2">Condition</th>
+          <th class="p-2">Engine Capacity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border border-gray-400/40">
+          <td class="text-center p-2"><%= vehicle.color %></td>
+          <td class="text-center p-2"><%= vehicle.engineNo %></td>
+          <td class="text-center p-2"><%= vehicle.doors %></td>
+          <td class="text-center p-2"><%= vehicle.condition %></td>
+          <td class="text-center p-2"><%= vehicle.engineCapacity %></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <table class="w-full border-collapse border border-gray-400/40 mb-4">
+      <thead>
+        <tr class="bg-red-100">
+          <th class="p-2">Seats</th>
+          <th class="p-2">Fuel Type</th>
+          <th class="p-2">Gross Mass</th>
+          <th class="p-2">Carrier Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-center p-2"><%= vehicle.seats %></td>
+          <td class="text-center p-2"><%= vehicle.fuelType %></td>
+          <td class="text-center p-2"><%= vehicle.grossMass %></td>
+          <td class="text-center p-2"><%= vehicle.carrierDetails %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Price Table -->
+  <div class="my-6">
+    <h2 class="font-bold text-lg mb-2">Vehicle Price</h2>
+    <table class="w-full border-collapse border border-gray-400/40">
+      <tbody>
+        <tr>
+          <td class="border border-gray-400/40 p-2 font-semibold">Vehicle Price</td>
+          <td class="border border-gray-400/40 p-2 text-right">P <%= price.vehiclePrice %></td>
+        </tr>
+        <tr>
+          <td class="border border-gray-400/40 p-2 font-semibold">Transport</td>
+          <td class="border border-gray-400/40 p-2 text-right">P <%= price.transport %></td>
+        </tr>
+        <tr class="bg-red-100">
+          <td class="border border-gray-400/40 p-2 font-bold">Total</td>
+          <td class="border border-gray-400/40 p-2 text-right font-bold">P <%= price.total %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bg-red-500 h-[2px] my-2"></div>
+
+  <!-- Payment Instructions -->
+  <div class="my-6 p-4 bg-yellow-50 border border-yellow-200 rounded">
+    <p class="font-semibold">
+      The Reference number should be mentioned as reference on bank
+      slip/TT or EFT in order to ensure there are no delays in
+      allocation your payment.
+    </p>
+  </div>
+
+  <!-- Terms & Conditions -->
+  <div class="my-6">
+    <h2 class="font-bold text-lg mb-2">Terms & Conditions</h2>
+    <ol class="list-decimal pl-5 space-y-2">
+      <% terms.forEach(term => { %>
+        <li><%= term %></li>
+      <% }); %>
+    </ol>
+  </div>
+
+  <!-- Contact Information -->
+  <div class="my-6 p-4 bg-gray-100 rounded">
+    <p class="font-semibold mb-2">
+      If you have any questions or queries, please contact UFS AFRICA on
+      details below...
+    </p>
+    <p class="font-semibold">UFS Africa (Pty) Ltd</p>
+    <p>Address: <%= contact.address %></p>
+    <p>
+      Email: <%= contact.email %> Web: <%= contact.website %> Phone: <%= contact.phone %>
+    </p>
+  </div>
+</body>
+</html>

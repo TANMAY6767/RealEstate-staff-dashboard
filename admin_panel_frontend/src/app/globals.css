@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    /* Light theme - Enhanced red apple colors */
+    --background: #ffffff;
+    --sidebar-bg: #fff5f5;
+    --sidebar-border: #fed7d7;
+    --text: #2d3748;
+    --heading: #c53030;
+    --hover-text: #e53e3e;
+    --hover-bg: #feebeb;
+    --border: #fed7d7;
+    --card-bg: #ffffff;
+    --card-text: #742a2a;
+    --primary: #e53e3e;
+    --header: #c53030;
+    --input-text-bg: #2d3748;
+    --input-bg: #f7fafc;
+    --table-bg: #ffffff;
+    --button-bg: #e53e3e;
+    --secondary-bg: #feebeb;
+    --bgSwitch: #1a202c;
+  }
+
+ .dark {
+  /* Midnight Garnet – new dark palette */
+  --background: #0b1020;          /* deepest navy */
+  --sidebar-bg: #111827;          /* slightly lighter navy */
+  --sidebar-border: #374151;      /* soft graphite border */
+
+  --text: #e5e7eb;                /* cool gray-200 */
+  --heading: #fca5a5;             /* bright coral-red */
+  --hover-text: #f87171;          /* lighter coral */
+  --hover-bg: #1f2937;            /* slate-800 */
+
+  --border: #4b5563;              /* slate-600 */
+  --card-bg: #1f2937;             /* slate-800 */
+  --table-bg: #111827;            /* same as sidebar */
+  --card-text: #fecaca;           /* rose-200 */
+
+  --primary: #dc2626;             /* pure red-600 */
+  --header: #ef4444;              /* rose-500 */
+  --button-bg: #dc2626;           /* match primary */
+
+  --input-bg: #1f2937;            /* slate-800 */
+  --input-text-bg: #f9fafb;       /* gray-50 */
+  --secondary-bg: #240000;        /* deep wine */
+  --bgSwitch: #374151;            /* graphite toggle */
+}
+}
+
+@layer base {
+  * {
+  }
+  body {
+  }
+}
+
+/* Scrollbar styling */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 9999px;
+    border: 2px solid var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--text) var(--background);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes zoomOutFade {
+  0% {
+    opacity: 0;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-zoomOutFade {
+  animation: zoomOutFade 1.5s ease-in-out;
+}
